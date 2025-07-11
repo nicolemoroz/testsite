@@ -1,5 +1,8 @@
+/* Import Poppins font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   background: #f0f8ff;
   margin: 40px;
   color: #333;
@@ -25,7 +28,7 @@ p {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin: 20px auto;
-  max-width: 500px;
+  max-width: 600px; /* Increased from 500px */
 }
 .subscribe-section form {
   display: flex;
@@ -44,7 +47,7 @@ p {
   border: 1px solid #b2bec3;
   border-radius: 4px;
   font-size: 1em;
-  width: 220px;
+  width: 170px; /* Reduced from 220px */
   transition: border 0.2s;
 }
 .subscribe-section input[type="email"]:focus {
@@ -78,4 +81,17 @@ a {
 }
 a:hover {
   text-decoration: underline;
+}
+.site-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  background: #eaf2f8;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  font-size: 1em;
+  color: #34495e;
+  padding: 18px 0;
+  text-align: center;
+  z-index: 100;
 }
