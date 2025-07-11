@@ -24,18 +24,34 @@
     </form>
   </div>
   <script>
-    // Simple email validation
+    // Simple email validation and AJAX submission
     const form = document.getElementById('subscribe-form');
     const emailInput = document.getElementById('email');
     const errorMsg = document.getElementById('email-error');
 
     form.addEventListener('submit', function(e) {
+      e.preventDefault();
       if (!emailInput.checkValidity()) {
-        e.preventDefault();
         errorMsg.style.display = 'inline';
-      } else {
-        errorMsg.style.display = 'none';
+        return;
       }
+      errorMsg.style.display = 'none';
+
+      // Send data to Make webhook
+      fetch(form.action, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `email=${encodeURIComponent(emailInput.value)}`
+      })
+      .then(response => {
+        // Show confirmation message
+        form.innerHTML = '<span style="color:#27ae60;font-size:1.1em;">You\'ve subscribed! 🎉</span>';
+      })
+      .catch(() => {
+        form.innerHTML = '<span style="color:#e74c3c;font-size:1.1em;">There was an error. Please try again.</span>';
+      });
     });
 
     emailInput.addEventListener('input', function() {
